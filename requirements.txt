@@ -1,0 +1,5 @@
+cv2
+pyautogui
+mediapipe
+screen_brightness_control
+streamlit
