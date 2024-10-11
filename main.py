@@ -1,9 +1,13 @@
+import os
 import cv2
-import pyautogui
 import mediapipe as mp
 import screen_brightness_control as sbc
 import streamlit as st
 
+# Check if the environment is headless (no graphical interface)
+is_headless = "DISPLAY" not in os.environ
+
+# Define volume control functions
 def increase_volume():
     st.write("Increasing volume")
 
@@ -56,10 +60,10 @@ while run:
 
                 threshold = 0.05
 
-                if index_thumb_distance < threshold:
+                if index_thumb_distance < threshold and not is_headless:
                     pyautogui.press('volumeup')
                     increase_volume()
-                elif middle_thumb_distance < threshold:
+                elif middle_thumb_distance < threshold and not is_headless:
                     pyautogui.press('volumedown')
                     decrease_volume()
             if handedness.classification[0].label == 'Right':
