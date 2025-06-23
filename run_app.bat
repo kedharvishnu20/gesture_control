@@ -1,0 +1,6 @@
+@echo off
+echo Reinstalling dependencies...
+pip install -r requirements.txt --force-reinstall
+echo.
+echo Starting application...
+streamlit run main.py
